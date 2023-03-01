@@ -35,6 +35,16 @@ I want the blog to be simple with the following design in mind:
  This is planned to be a static site so should github begin charging for pages or doing
  something I don't agree with, I can easily move hosts or even host it myself like I planned from the offset.
  
+ For CI I added a basic github actions workflow to build my go code and run tests
+ My tests simply would attempt to generate the website using templates and fail if
+ the site could not be generated. This seemed sufficient enough for just a sanity test for me
+ to not push anything to main that could break the site.
+
+ For CD I went with using another github action to deploy the content of the static folder to github pages.
+ This was really simple to setup. I may even elect to remove the static folder entirely and just have my build run
+ my program and generate it. at build time. Really doesn't matter too much here other than generating locally lets me see it.
+
+ The first problem I have run into is with href links. Locally I can refer to files via their path, but d
 
 
 "
