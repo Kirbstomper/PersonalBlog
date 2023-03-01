@@ -1,0 +1,29 @@
+title: The creation of this blog and why (TODO)
+date: March 1st 2023 (TODO)
+content: "
+For the longest time as a developer I have wrestled with having personal blog
+I have used stuff such as blogspot, to host one, but it seems like every developer
+worth their salt has a personal site built and hosted by them, no matter how shitty it is.
+
+My constraints are that I don't want to pay a lot of money for hosting so I plan
+to run it on one of my home server machines, most likely on a raspberry pi 4. AS I work on it I will
+edit this file, but before actually deploying I will clean things up. At least that's the plan or else
+you will get stream of conciousness writing.
+
+
+I picked go because it has a few key features, running on a lot of things, being fast enough, and having
+everything I need to build this blog as a part of the standard library. I do Java for the most part in my day job
+as a Team Lead at AHEAD, but the flexability and power of just plain ole Go without having to bring in 
+entire libraries or frameworks is great. Modern Java and Spring are basically synonomous at this point and while
+spring is an amazing framework I love to work in, it just feels nice building something from abstracted scratch
+
+The idea for the blog is to write blog posts such as this in yaml, then using templates,
+generate the actual HTML pages and store them on disk at startup to save on actual processing time.
+
+I want the blog to be simple with the following design in mind:
+
+ at the index display about me, with a link to the latest post
+ for each post have a link to the post before and if not the latest post, the post after
+ Posts in chronological order based on the date field
+ have a page that simply lists in order of latest to oldest all my posts
+"
