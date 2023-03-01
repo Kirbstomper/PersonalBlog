@@ -20,4 +20,10 @@ spring is an amazing framework I love to work in, it just feels nice building so
 The idea for the blog is to write blog posts such as this in yaml, then using templates,
 generate the actual HTML pages and store them on disk at startup to save on actual processing time.
 
+I want the blog to be simple with the following design in mind:
+
+ at the index display about me, with a link to the latest post
+ for each post have a link to the post before and if not the latest post, the post after
+ Posts in chronological order based on the date field
+ have a page that simply lists in order of latest to oldest all my posts
 "
