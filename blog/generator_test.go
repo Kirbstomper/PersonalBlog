@@ -12,7 +12,7 @@ import (
 
 func Test_GenerateSite(t *testing.T) {
 	os.Mkdir("test_temp", os.ModePerm)
-	blog.GenerateSite("test_temp")
+	blog.GenerateSite("../templates", "test_temp")
 	t.Run("Generate Index Test", test_GenerateIndex)
 
 	os.RemoveAll("test_temp")

@@ -6,17 +6,17 @@ import (
 )
 
 // Generates the entire site
-func GenerateSite(path string) {
-	generateIndex(path)
+func GenerateSite(templatesPath string, outpath string) {
+	generateIndex(templatesPath, outpath)
 }
 
 // Generates the index landing page
-func generateIndex(path string) {
-	tmpl, err := template.New("index.html").ParseFiles("../templates/index.html", "../templates/header.html")
+func generateIndex(templatesPath, outpath string) {
+	tmpl, err := template.New("index.html").ParseFiles(templatesPath+"/index.html", templatesPath+"/header.html")
 	if err != nil {
 		panic("Error reading template files")
 	}
-	file, err := os.Create(path + "/index.html")
+	file, err := os.Create(outpath + "/index.html")
 	if err != nil {
 		panic("Error creating index.html")
 	}
