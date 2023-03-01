@@ -26,4 +26,15 @@ I want the blog to be simple with the following design in mind:
  for each post have a link to the post before and if not the latest post, the post after
  Posts in chronological order based on the date field
  have a page that simply lists in order of latest to oldest all my posts
+
+ With some idea of a design down and the repo initiated the first thing to do before pounding my keyboard and 
+ getting this thing going is to have some form of CI running to make sure that commits I make either to articles or
+ to code does not break the build in anyway. Any commit I make should be able to build the site without trouble.
+
+ As for actual CD. For now it makes sense to host the site on github pages. 
+ This is planned to be a static site so should github begin charging for pages or doing
+ something I don't agree with, I can easily move hosts or even host it myself like I planned from the offset.
+ 
+
+
 "
