@@ -1,7 +1,7 @@
 package blog
 
 type Post struct {
-	name    string
-	date    string
-	content string
+	title   string `yaml:"title"`
+	date    string `yaml:"date"`
+	content string `yaml:"content"`
 }
