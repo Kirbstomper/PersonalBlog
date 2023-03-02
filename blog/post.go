@@ -2,6 +2,7 @@ package blog
 
 import (
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v2"
 )
@@ -36,4 +37,8 @@ func ReadAllPostsInDirectory(dirpath string) []Post {
 		posts = append(posts, ReadPostFromFile(dirpath+"/"+f.Name()))
 	}
 	return posts
+}
+
+func (p Post) GetTrucatedTitle() string {
+	return strings.ReplaceAll(p.Title, " ", "")
 }
