@@ -2,3 +2,7 @@
 
 <title>Chris's Smith Corner</title>
 <h1>POSTS</h1>
+
+{{range $val := .}}
+    <div><a href="./posts/{{.GetTrucatedTitle}}">{{.Title}}</a></div>
+{{end}}
