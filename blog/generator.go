@@ -32,7 +32,21 @@ func generateIndex(templatesPath, outpath string) {
 
 // Generates the posts page
 func generatePosts(templatesPath, outpath, postsdir string) {
-	tmpl, err := template.New("posts.html").ParseFiles(templatesPath+"/posts.html", templatesPath+"/header.html")
+	os.Mkdir(outpath+"/posts", os.ModePerm)
+
+	// For each post, create its page, add the title of page to list
+	var paths = make([]string, 0)
+	//Tempate for posts
+	tmpl, err := template.New("post.html").ParseFiles(templatesPath+"/post.html", templatesPath+"/header.html")
+	if err != nil {
+		panic("Error reading template files for generating posts")
+	}
+	for _, p := range ReadAllPostsInDirectory(postsdir) {
+		generatePageForPost(outpath, p, tmpl)
+		paths = append(paths, strings.ReplaceAll(p.Title, " ", ""))
+	}
+
+	tmpl, err = template.New("posts.html").ParseFiles(templatesPath+"/posts.html", templatesPath+"/header.html")
 	if err != nil {
 		panic("Error reading template files")
 	}
@@ -40,21 +54,11 @@ func generatePosts(templatesPath, outpath, postsdir string) {
 	if err != nil {
 		panic("Error creating posts.html")
 	}
-	err = tmpl.Execute(file, nil)
+	err = tmpl.Execute(file, PostsContainer{Paths: paths})
 	if err != nil {
 		panic("Error executing template")
 	}
 
-	//Tempate for posts
-	tmpl, err = template.New("post.html").ParseFiles(templatesPath+"/post.html", templatesPath+"/header.html")
-	if err != nil {
-		panic("Error reading template files for generating posts")
-	}
-	os.Mkdir(outpath+"/posts", os.ModePerm)
-	//For each post
-	for _, p := range ReadAllPostsInDirectory(postsdir) {
-		generatePageForPost(outpath, p, tmpl)
-	}
 }
 
 //generate each post
@@ -65,4 +69,8 @@ func generatePageForPost(outpath string, post Post, tmpl *template.Template) {
 		panic("Error creating " + post.Title)
 	}
 	tmpl.Execute(file, post)
+}
+
+type PostsContainer struct {
+	Paths []string
 }

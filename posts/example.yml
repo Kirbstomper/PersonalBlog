@@ -10,7 +10,6 @@ content: |
   edit this file, but before actually deploying I will clean things up. At least that's the plan or else
   you will get stream of conciousness writing.
   
-
   I picked go because it has a few key features, running on a lot of things, being fast enough, and having
   everything I need to build this blog as a part of the standard library. I do Java for the most part in my day job
   as a Team Lead at AHEAD, but the flexability and power of just plain ole Go without having to bring in 
