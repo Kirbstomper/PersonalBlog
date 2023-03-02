@@ -3,6 +3,7 @@ package blog
 import (
 	"html/template"
 	"os"
+	"sort"
 )
 
 var posts []Post
@@ -34,15 +35,19 @@ func generatePosts(templatesPath, outpath, postsdir string) {
 	os.Mkdir(outpath+"/posts", os.ModePerm)
 
 	// For each post, create its page, add the title of page to list
-	var posts = make([]Post, 0)
+	var posts = ReadAllPostsInDirectory(postsdir)
+	//sort posts by date
+	sort.Slice(posts, func(i, j int) bool {
+		return posts[i].Date.After(posts[j].Date)
+	})
+
 	//Tempate for posts
 	tmpl, err := template.New("post.html").ParseFiles(templatesPath+"/post.html", templatesPath+"/header.html")
 	if err != nil {
 		panic("Error reading template files for generating posts")
 	}
-	for _, p := range ReadAllPostsInDirectory(postsdir) {
+	for _, p := range posts {
 		generatePageForPost(outpath, p, tmpl)
-		posts = append(posts, p)
 	}
 
 	tmpl, err = template.New("posts.html").ParseFiles(templatesPath+"/posts.html", templatesPath+"/header.html")
