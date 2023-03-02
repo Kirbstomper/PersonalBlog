@@ -12,5 +12,5 @@ func main() {
 	os.Mkdir("static", fs.ModePerm)
 
 	//generate the site
-	blog.GenerateSite("templates", "static")
+	blog.GenerateSite("templates", "static", "posts")
 }
