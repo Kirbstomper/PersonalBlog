@@ -3,14 +3,15 @@ package blog
 import (
 	"os"
 	"strings"
+	"time"
 
 	"gopkg.in/yaml.v2"
 )
 
 type Post struct {
-	Title   string `yaml:"title"`
-	Date    string `yaml:"date"`
-	Content string `yaml:"content"`
+	Title   string    `yaml:"title"`
+	Date    time.Time `yaml:"date"`
+	Content string    `yaml:"content"`
 }
 
 func ReadPostFromFile(filepath string) Post {
