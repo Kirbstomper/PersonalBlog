@@ -47,3 +47,8 @@ content: |
  
   The next thing to solve was actually generating pages!
   The real fun is generating the pages with content, order can come later
+  
+  Post navigation actually wasn't that hard. With that though I came across my final challenge before working on making the site pretty.
+  I had to link things to the index page.
+
+  I already have code for generating and sorting the list to get the first post. So this actually wasn't that bad either
