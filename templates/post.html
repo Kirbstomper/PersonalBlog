@@ -5,3 +5,7 @@
 <h1>{{.Title}}</h1>
 
 <pre>{{.Content}}</pre>
+
+
+
+{{if .Previous}}<a href="/PersonalBlog/posts/{{.Previous}}">Previous</a>{{end}} {{if .Next}} <a href="/PersonalBlog/posts/{{.Next}}">Next</a>{{end}}
