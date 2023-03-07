@@ -8,4 +8,4 @@
 
 
 
-<a href="/PersonalBlog/posts/{{.Previous}}">Previous</a> <a href="/PersonalBlog/posts/{{.Next}}">Next</a>
+{{if .Previous}}<a href="/PersonalBlog/posts/{{.Previous}}">Previous</a>{{end}} {{if .Next}} <a href="/PersonalBlog/posts/{{.Next}}">Next</a>{{end}}
