@@ -9,9 +9,11 @@ import (
 )
 
 type Post struct {
-	Title   string    `yaml:"title"`
-	Date    time.Time `yaml:"date"`
-	Content string    `yaml:"content"`
+	Title    string    `yaml:"title"`
+	Date     time.Time `yaml:"date"`
+	Content  string    `yaml:"content"`
+	Previous string
+	Next     string
 }
 
 func ReadPostFromFile(filepath string) Post {

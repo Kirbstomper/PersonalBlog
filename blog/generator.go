@@ -46,7 +46,13 @@ func generatePosts(templatesPath, outpath, postsdir string) {
 	if err != nil {
 		panic("Error reading template files for generating posts")
 	}
-	for _, p := range posts {
+	for i, p := range posts {
+		if i != 0 {
+			p.Next = posts[i-1].GetTrucatedTitle()
+		}
+		if i != len(posts)-1 {
+			p.Previous = posts[i+1].GetTrucatedTitle()
+		}
 		generatePageForPost(outpath, p, tmpl)
 	}
 
