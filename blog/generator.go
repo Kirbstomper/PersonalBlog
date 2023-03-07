@@ -10,8 +10,8 @@ var posts []Post
 
 // Generates the entire site
 func GenerateSite(templatesPath string, outpath string, postsdir string) {
-	generateIndex(templatesPath, outpath)
 	generatePosts(templatesPath, outpath, postsdir)
+	generateIndex(templatesPath, outpath)
 }
 
 // Generates the index landing page
@@ -24,7 +24,7 @@ func generateIndex(templatesPath, outpath string) {
 	if err != nil {
 		panic("Error creating index.html")
 	}
-	err = tmpl.Execute(file, nil)
+	err = tmpl.Execute(file, posts[0])
 	if err != nil {
 		panic("Error executing template")
 	}
@@ -35,7 +35,7 @@ func generatePosts(templatesPath, outpath, postsdir string) {
 	os.Mkdir(outpath+"/posts", os.ModePerm)
 
 	// For each post, create its page, add the title of page to list
-	var posts = ReadAllPostsInDirectory(postsdir)
+	posts = ReadAllPostsInDirectory(postsdir)
 	//sort posts by date
 	sort.Slice(posts, func(i, j int) bool {
 		return posts[i].Date.After(posts[j].Date)
